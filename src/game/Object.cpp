@@ -688,6 +688,10 @@ void Object::_BuildValuesUpdate(uint8 updatetype, ByteBuffer * data, UpdateMask 
                     else
                         *data << (m_uint32Values[ index ] & ~UNIT_DYNFLAG_OTHER_TAGGER);
                 }
+				else if(index == UNIT_FIELD_FACTIONTEMPLATE && GetTypeId() == TYPEID_PLAYER && ((Player*)this)->IsInSameGroupWith(target)) //Si on met a jour la faction
+				{ //D'un joueur
+					*data << target->m_uint32Values[UNIT_FIELD_FACTIONTEMPLATE]; //Faction de celui qui va recevoir le packet
+				}
                 else
                 {
                     // send in current format (float as float, uint32 as uint32)

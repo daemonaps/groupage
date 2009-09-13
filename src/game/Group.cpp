@@ -285,6 +285,7 @@ bool Group::AddMember(const uint64 &guid, const char* name)
     Player *player = objmgr.GetPlayer(guid);
     if(player)
     {
+		ObjectAccessor::UpdateObject(player,NULL);
         if(!IsLeader(player->GetGUID()) && !isBGGroup())
         {
             // reset the new member's instances, unless he is currently in one of them
