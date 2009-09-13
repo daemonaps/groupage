@@ -1450,7 +1450,7 @@ void Spell::EffectDummy(uint32 i)
             if (m_spellInfo->SpellFamilyFlags & UI64LIT(0x0080000000000000))
             {
                 if (!unitTarget)
-                    return;
+                    unitTarget = m_caster;
 
                 int hurt = 0;
                 int heal = 0;
